@@ -112,7 +112,7 @@ st.write("""
 """)
 
 # 写真の代わりにイメージを表示
-st.image("https://via.placeholder.com/600x400/87CEEB/FFFFFF?text=修学旅行の写真%0A(顔にスタンプ加工済み)", 
+st.image("図1（スタンプあり）.png",
          caption="修学旅行での記念写真（イメージ）", width=500)
 
 if st.button("この写真にひそむリスクを確認する"):
