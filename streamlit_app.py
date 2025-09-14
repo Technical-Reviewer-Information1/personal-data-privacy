@@ -112,7 +112,7 @@ st.write("""
 """)
 
 # 写真の代わりにイメージを表示
-st.image("図1（スタンプあり）.png",
+st.image("school_trip_stamped.png",
          caption="修学旅行での記念写真（イメージ）", width=500)
 
 if st.button("この写真にひそむリスクを確認する"):
