@@ -1,59 +1,24 @@
-# 個人情報とプライバシー学習アプリ
+# 個人情報とプライバシー
 
-このStreamlitアプリケーションは、ユーザーが体験的に個人情報保護とプライバシーについて学習できる教育ツールです。
+『大学入学共通テスト「情報Ⅰ」対策問題集』（技術評論社, ISBN 978-4-297-15084-6）pp.214-215 連動Webアプリ。
 
-## 機能
+**公開URL**: https://technical-reviewer-information1.github.io/personal-data-privacy/
 
-### ステップ1: はじめに
-- 個人情報を「カギ」に例えた導入
-- プライバシー保護の重要性を説明
+何が個人情報にあたるかを判定し、写真1枚からどこまで分かってしまうかを確かめます。
 
-### ステップ2: 個人情報識別クイズ
-- 個人情報保護法に基づいた個人情報の判定
-- インタラクティブなチェックボックス形式
-- Plotlyを使った結果の可視化
+## 技術
 
-### ステップ3: 写真リスク分析
-- SNS投稿写真に潜むリスクの体験学習
-- 視覚的なリスク評価チャート
-- 位置情報、制服、背景などのリスク要因の説明
+静的な HTML / CSS / JavaScript のみで動作します。ビルド不要・外部CDN不使用・サーバ通信なし。
+GitHub Pages で配信しており、Python や Streamlit は不要です。スマートフォン／タブレット／PC に対応。
 
-### ステップ4: 日常シーン判断
-- タブ形式での実践的なシナリオ学習
-- SNS、フリマアプリ、迷惑メールでの適切な行動選択
-- 即座のフィードバックと詳細解説
-
-### 追加機能
-- 理解度チェックスライダー
-- インタラクティブな可視化（Plotly使用）
-- レスポンシブデザイン
-
-## セットアップ
-
-### 必要な依存関係
-
-```bash
-pip install -r requirements.txt
+```
+index.html
+css/style.css   全アプリ共通スタイル
+css/app.css     このアプリ固有のスタイル
+js/app.js       画面制御
 ```
 
-### アプリの実行
+`streamlit_app.py` は旧版（Streamlit Community Cloud 用）です。
 
-```bash
-streamlit run app.py
-```
-
-## 技術仕様
-
-- **フレームワーク**: Streamlit
-- **可視化ライブラリ**: Plotly
-- **画像処理**: Pillow (PIL)
-- **Python**: 3.7以上推奨
-
-## 開発者
-
-- Created by Dit-Lab.(Daiki ITO)
-- Supported by Tomoaki ATSUMI
-
-## ライセンス
-
-このプロジェクトは教育目的で作成されています。
+---
+Created by Dit-Lab.(Daiki ITO) / Supported by Tomoaki ATSUMI
