@@ -3,7 +3,11 @@
  "title": "個人情報とプライバシー",
  "pp": "pp.214-215",
  "lead": "何が個人情報にあたるかを判定し、写真1枚からどこまで分かってしまうかを確かめます。",
- "scripts": ["chart.js","terms.js","quiz.js","app.js"],
+ "scripts": [
+  "terms.js",
+  "quiz.js",
+  "app.js"
+ ],
  "use": {
   "class": [
    "STEP 1 で「単体では特定できないが組み合わせると特定できる」例を考えさせる。",
