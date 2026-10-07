@@ -28,3 +28,25 @@ table.tbl td .blankin{width:100%; max-width:none}
 .combo label.on{border-color:var(--accent);background:var(--warn-bg)}
 .riskbar{height:26px;border:1px solid var(--line);background:#fff;position:relative;margin-top:10px}
 .riskbar i{display:block;height:100%;background:#c0392b;opacity:.6}
+
+/* --- 絞り込みの可視化（STEP 2） --- */
+.narrow{margin-top:18px}
+.narrow .nlabel{font-size:.8rem;color:var(--ink-2);margin-bottom:8px}
+.nscale{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);
+  font-variant-numeric:tabular-nums;margin-bottom:4px}
+.nscale span{flex:1;text-align:center}
+.ntrack{position:relative;height:12px;border-radius:6px;
+  background:linear-gradient(90deg,#dbe7f3 0%,#f3d9d9 100%);border:1px solid var(--rule)}
+.nmark{position:absolute;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;
+  background:var(--accent);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);
+  transition:left .55s cubic-bezier(.45,.05,.35,1)}
+.nmark.hot{background:#c0392b}
+.ndiv{margin-top:8px;font-size:.78rem;color:var(--ink-2);min-height:1.4em}
+.ndiv .op{display:inline-block;background:var(--panel-2,#eef2f6);border:1px solid var(--rule);
+  border-radius:3px;padding:1px 6px;margin:2px 4px 2px 0;font-variant-numeric:tabular-nums}
+.dotfield{margin-top:16px}
+.dotfield .dlabel{font-size:.8rem;color:var(--ink-2);margin-bottom:6px}
+.dots{display:flex;flex-wrap:wrap;gap:3px;max-width:100%}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--accent);opacity:.75;
+  transition:opacity .4s, transform .4s, background .4s}
+.dots i.me{background:#c0392b;opacity:1;transform:scale(1.9)}

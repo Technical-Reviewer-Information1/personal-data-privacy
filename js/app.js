@@ -19,6 +19,7 @@
     const cand = Math.max(1, POP / div);
     const risk = Math.min(100, Math.max(0, (1 - Math.log10(cand) / Math.log10(POP)) * 100));
     $('riskBar').style.width = risk + '%';
+    drawNarrow(cand, POP);
     const n = $('comboNote');
     const cnt = Object.values(picked).filter(Boolean).length;
     n.className = 'note ' + (cand <= 1.5 ? 'ng' : cand < 100 ? 'warn' : 'info');
@@ -29,6 +30,44 @@
         (cand <= 1.5
           ? '<br><strong>ここまで来ると事実上、個人が特定できます。</strong>単体では個人情報でなくても、組み合わせれば個人情報になるのはこのためです。'
           : '<br>もう少しチェックを増やしてみましょう。（この人数は考え方を示すためのおおよその計算です）');
+  }
+
+
+  /* 絞り込みを対数スケールと点で見せる */
+  const NSTEPS = [1e8, 1e7, 1e6, 1e5, 1e4, 1e3, 1e2, 1e1, 1];
+  const NLAB = ['1億', '1000万', '100万', '10万', '1万', '1000', '100', '10', '1'];
+  function jpn(n) {
+    if (n >= 1e8) return (n / 1e8).toFixed(n >= 1e9 ? 0 : 2).replace(/\.?0+$/, '') + '億';
+    if (n >= 1e4) return Math.round(n / 1e4).toLocaleString('ja-JP') + '万';
+    return Math.round(n).toLocaleString('ja-JP');
+  }
+  function drawNarrow(cand, POP) {
+    if (!$('nScale').innerHTML) $('nScale').innerHTML = NLAB.map(s => '<span>' + s + '</span>').join('');
+    /* 左端＝1億2500万人、右端＝1人。対数で位置を決める */
+    const lo = Math.log10(1), hi = Math.log10(POP);
+    const t = 1 - (Math.log10(Math.max(1, cand)) - lo) / (hi - lo);
+    const mk = $('nMark');
+    mk.style.left = (t * 100) + '%';
+    mk.classList.toggle('hot', cand <= 1.5);
+
+    const ops = COMBO.map((c, i) => picked[i]
+      ? '<span class="op">' + c.t + ' ÷ ' + c.n.toLocaleString('ja-JP') + '</span>' : '').join('');
+    $('nDiv').innerHTML = ops
+      ? ops + '<br>約1億2500万人 → <strong>約' + jpn(cand) + '人</strong>'
+      : 'チェックすると、しぼりこまれていく様子が目で見えます。';
+
+    /* 数えられる人数まで来たら、点で表す */
+    const box = $('dotField');
+    if (cand <= 200) {
+      box.hidden = false;
+      const n = Math.max(1, Math.round(cand));
+      $('dotLabel').innerHTML = '<strong>点1つ ＝ 1人</strong>。残り <strong>' + n + '人</strong>'
+        + (n === 1 ? '（＝あなた1人に特定されました）' : '');
+      $('dots').innerHTML = new Array(n).fill(0)
+        .map((_, i) => '<i' + (n === 1 || i === n - 1 ? ' class="me"' : '') + '></i>').join('');
+    } else {
+      box.hidden = true;
+    }
   }
 
   /* ===== STEP 3 ===== */

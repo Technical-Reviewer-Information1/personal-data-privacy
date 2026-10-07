@@ -15,6 +15,19 @@
     <p class="desc">単体では個人を特定できない情報でも、<strong>組み合わせると</strong>特定できることがあります。チェックを増やしてみましょう。</p>
     <div class="panel">
       <div class="combo" id="comboBox"></div>
+
+      <div class="narrow">
+        <div class="nlabel">日本の人口から、何人までしぼれたか</div>
+        <div class="nscale" id="nScale"></div>
+        <div class="ntrack"><i class="nmark" id="nMark"></i></div>
+        <div class="ndiv" id="nDiv"></div>
+      </div>
+
+      <div class="dotfield" id="dotField" hidden>
+        <div class="dlabel" id="dotLabel"></div>
+        <div class="dots" id="dots"></div>
+      </div>
+
       <div class="riskbar"><i id="riskBar" style="width:0%"></i></div>
       <div class="note" id="comboNote" style="margin-top:12px"></div>
     </div>
